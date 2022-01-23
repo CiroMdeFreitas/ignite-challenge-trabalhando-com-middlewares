@@ -24,7 +24,7 @@ function checksCreateTodosUserAvailability(request, response, next) {
   const { user } = request;
 
   if((!user.pro) && (user.todos.length >= 10))
-    return response.status(403).JSON({ error: "Free version task limit achieved!" });
+    return response.status(403).json({ error: "Free version task limit achieved!" });
   
   return next();
 }
