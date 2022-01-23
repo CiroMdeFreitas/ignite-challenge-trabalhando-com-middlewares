@@ -21,7 +21,12 @@ function checksExistsUserAccount(request, response, next) {
 }
 
 function checksCreateTodosUserAvailability(request, response, next) {
-  // Complete aqui
+  const { user } = request;
+
+  if((!user.pro) && (user.todos.length < 10))
+    return response.status(403).JSON({ error: "Free version task limit achieved" });
+  
+  return next();
 }
 
 function checksTodoExists(request, response, next) {
